@@ -140,7 +140,7 @@
  [наверх](#0)
  
 <a name="3"><h2>конфигурация устройства и проверка коннективити:</h2></a>
- ![Lab Map](https://github.com/ssvstdt/netwbas/blob/main/lab1/net-lab1-ping-pc.jpg)  ![Lab Map](https://github.com/ssvstdt/netwbas/blob/main/lab1/net-lab1-ping-term.JPG)
+ ![ping-pc](https://github.com/ssvstdt/netwbas/blob/main/lab1/net-lab1-ping-pc.jpg)  ![ping term](https://github.com/ssvstdt/netwbas/blob/main/lab1/net-lab1-ping-term.JPG)
  [наверх](#0) 
 
 ```
