@@ -140,9 +140,13 @@
  [наверх](#0)
  
 <a name="3"><h2>конфигурация устройства и проверка коннективити:</h2></a>
- ![ping-pc](https://github.com/ssvstdt/netwbas/blob/main/lab1/net-lab1-ping-pc.jpg)  ![ping term](https://github.com/ssvstdt/netwbas/blob/main/lab1/net-lab1-ping-term.JPG)
+# проверка на коммутаторе
+ ![ping-pc](https://github.com/ssvstdt/netwbas/blob/main/lab1/net-lab1-ping-tern.JPG) 
+ # проверка на PC
+ ![ping term](https://github.com/ssvstdt/netwbas/blob/main/lab1/net-lab1-ping-pc.JPG)
  [наверх](#0) 
 
+# конфигурация коммутатора
 ```
 S1#sh run
 Building configuration...
@@ -241,3 +245,8 @@ line vty 5 15
 !
 end
 ```
+ [наверх](#0)
+ 
+ # проверка коннективити
+ ![ping term](https://github.com/ssvstdt/netwbas/blob/main/lab1/net-lab1-telnet-pc.JPG)
+ [наверх](#0)
