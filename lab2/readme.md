@@ -24,6 +24,7 @@
 [Часть 2: Mac Адреса](#3)
 
 [Часть 2: очистка таблицы MAC адресов](#4)
+
 ----
 <a name="1"><h2>топология</h2></a>
 ![Lab Map](https://github.com/ssvstdt/netwbas/blob/main/lab2/topology.JPG)
@@ -65,7 +66,7 @@ hostname S2
 !
 enable password 7 0822455D0A16
 
-interface FastEthernet0/6
+interface FastEthernet0/18
  switchport mode access
 
 interface Vlan1
@@ -88,6 +89,7 @@ line vty 5 15
  [наверх](#0)
  
 <a name="3"><h2>MAC Адреса:</h2></a>
+
  # S1:
  ![s1-mac](https://github.com/ssvstdt/netwbas/blob/main/lab2/s1-mac-tab.JPG) 
  # S2
@@ -98,6 +100,7 @@ line vty 5 15
   ![s2-mac](https://github.com/ssvstdt/netwbas/blob/main/lab2/s2-mac-clear.JPG)
 
  [наверх](#0) 
+
  # ARP на PC2
  ![pc2-arp](https://github.com/ssvstdt/netwbas/blob/main/lab2/pc2-arp.JPG)
  [наверх](#0)
