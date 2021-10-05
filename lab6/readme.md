@@ -189,7 +189,7 @@ interface FastEthernet0/5
 ```
  [наверх](#0) 
 
-<a name="5"><h2>Часть 4. Настройка маршрутизации между сетями VLAN</h2></a>
+<a name="5"><h2>Часть 4. Настройка маршрутизации между сетями VLAN на R1</h2></a>
 ```
 !
 interface GigabitEthernet0/0/1.10
@@ -213,9 +213,10 @@ interface GigabitEthernet0/0/1.1000
 <a name="6"><h2>Часть 5. Проверка работоспособности маршрутизации между VLAN</h2></a>
 # ping  from PC-A
  ![pca-pings](https://github.com/ssvstdt/netwbas/blob/main/lab6/pca-pings.JPG)
+
  [наверх](#0)
 # tracert  from PC-B
  ![pcb-tracert](https://github.com/ssvstdt/netwbas/blob/main/lab6/pcb-tracert.JPG)
- [наверх](#0)
+
 
  [наверх](#0)
