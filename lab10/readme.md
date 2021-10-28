@@ -197,9 +197,10 @@ interface Loopback1
 ```
 
 # проверка установки смежности между R1 и R2
-![2_f](https://github.com/ssvstdt/netwbas/blob/main/lab10/2_f.JPG)
-![2_f2](https://github.com/ssvstdt/netwbas/blob/main/lab10/2_f2.JPG)
 
+![2_f](https://github.com/ssvstdt/netwbas/blob/main/lab10/2_f.JPG)
+
+![2_f2](https://github.com/ssvstdt/netwbas/blob/main/lab10/2_f2.JPG)
 т.к. определение DR|BDR основывается на наивысшем router-id R2 выбран RD, R1 - BDR
 
 
@@ -219,7 +220,7 @@ interface Loopback1
 interface GigabitEthernet0/0/1
   ip ospf priority 50
 ```
-результат R1 стал DR:
+# результат R1 стал DR:
 ![3_1a](https://github.com/ssvstdt/netwbas/blob/main/lab10/3_1a.JPG) 
  
 
@@ -233,7 +234,7 @@ interface GigabitEthernet0/0/1
 ```
 ip route 0.0.0.0 0.0.0.0 loopback 1
 ```
-получаем предупреждение, о возможном влиянии на производительность
+# получаем предупреждение, о возможном влиянии на производительность
 ![3_1c](https://github.com/ssvstdt/netwbas/blob/main/lab10/3_1c.JPG) 
 
 
@@ -264,8 +265,9 @@ auto-cost reference-bandwidth 10
 обзор настроек интерфейса:
 ![3_2a](https://github.com/ssvstdt/netwbas/blob/main/lab10/3_2a.JPG)
 
-повторение вывода ip route ospf
+# повторение вывода ip route ospf
 ![3_2b](https://github.com/ssvstdt/netwbas/blob/main/lab10/3_2b.JPG)
+
 т.к. теперь анонсируется весь интерфейс маска анонсируемой сети берется из настроек интерфейса
 
 # вывод команды show ip route ospf на маршрутизаторе R2
