@@ -5,7 +5,7 @@
 
 Часть 2. Настройка сетей VLAN
 
-Часть 3: Настройки безопасности коммутатора.
+Часть 3: Настройки безопасности коммутатора
 
 
 
@@ -15,15 +15,11 @@
 <a name="0"><h2> </h2></a>
 [Часть 1. топологиия](#1)
 
-[Часть 1: Настройка основных параметров устройства](#2)
+[Часть 1. Настройка основного сетевого устройства](#2)
 
-[Часть 2. Проверка назначения адреса SLAAC от R1](#3)
+[Часть 2. Настройка сетей VLAN](#3)
 
-[Часть 3. Наблюдение за процессом выбора протоколом STP порта, исходя из стоимости портов](#4)
-
-[Часть 4: Настройка сервера DHCPv6 с сохранением состояния на R1](#5)
-
-[Часть 5. Настройка и проверка ретрансляции DHCPv6 на R2.](#6)
+[Часть 3: Настройки безопасности коммутатора](#4)
 
 
  
@@ -32,156 +28,87 @@
 <a name="1"><h2>топология</h2></a>
 ![Lab Map](https://github.com/ssvstdt/netwbas/blob/main/lab9/topology.JPG)
 
+![Lab Map](https://github.com/ssvstdt/netwbas/blob/main/lab9/topology_add.JPG)
   
  [наверх](#0)
 
-<a name="2"><h2>Настройка основных параметров устройства:</h2></a>
-a.	Присвойте коммутатору имя устройства.
+<a name="2"><h2>Настройка основного сетевого устройства</h2></a>
 
-b.	Отключите поиск DNS, чтобы предотвратить попытки маршрутизатора неверно преобразовывать введенные команды таким образом, как будто они являются именами узлов.
-
-c.	Назначьте class в качестве зашифрованного пароля привилегированного режима EXEC.
-
-d.	Назначьте cisco в качестве пароля консоли и включите вход в систему по паролю.
-
-e.	Назначьте cisco в качестве пароля VTY и включите вход в систему по паролю.
-
-f.	Зашифруйте открытые пароли.
-
-g.	Создайте баннер с предупреждением о запрете несанкционированного доступа к устройству.
-
-h.	Отключите все неиспользуемые порты.
-
-i.	Сохраните текущую конфигурацию в файл загрузочной конфигурации
-
-
-``` 
-hostname S2
-!
-enable password 7 0822404F1A0A
-!
-!
-!
-no ip domain-lookup
-!
-username admin privilege 15 password 7 0822455D0A16
-!
-!
-banner motd ^CCONNECTION PROHIBITED, DISCONNECT IMMEDIETLY!!!^C
-!
-!
-!
-line con 0
- password 7 0822455D0A16
- logging synchronous
- login local
-!
-line vty 0 4
- password 7 0822455D0A16
- login local
-line vty 5 15
- login
-``` 
-
- [наверх](#0) 
-
-#  Настройка базовых параметров маршрутизаторов
+# Конфигурация R1
 ```
-hostname R2
+enable
+configure terminal
+hostname R1
+no ip domain lookup
+ip dhcp excluded-address 192.168.10.1 192.168.10.9
+ip dhcp excluded-address 192.168.10.201 192.168.10.202
 !
-enable password 7 0822404F1A0A
+ip dhcp pool Students
+ network 192.168.10.0 255.255.255.0
+ default-router 192.168.10.1
+ domain-name CCNA2.Lab-11.6.1
 !
-!
-!
-no ip domain-lookup
-ipv6 unicast-routing
-!
-username admin privilege 15 password 7 0822455D0A16
-!
-!
-banner motd ^CCONNECTION PROHIBITED, DISCONNECT IMMEDIATLY!!!^C
-!
-!
-!
-line con 0
- password 7 0822455D0A16
- logging synchronous
- login local
-!
-line vty 0 4
- password 7 0822455D0A16
- login local
-line vty 5 15
- login
-```
-
- [наверх](#0) 
-# настройка интерфейсов маршрутизаторов 
-
-```
-interface GigabitEthernet0/0/0
- no ip address
- duplex auto
- speed auto
- ipv6 address FE80::2 link-local
- ipv6 address 2001:DB8:ACAD:2::2/64
+interface Loopback0
+ ip address 10.10.1.1 255.255.255.0
 !
 interface GigabitEthernet0/0/1
- no ip address
- duplex auto
- speed auto
- ipv6 address FE80::1 link-local
- ipv6 address 2001:DB8:ACAD:3::1/64
+ description Link to S1
+ ip dhcp relay information trusted
+ ip address 192.168.10.1 255.255.255.0
+ no shutdown
 !
-!
-ipv6 route ::/0 2001:DB8:ACAD:2::1
+line con 0
+ logging synchronous
+ exec-timeout 0 0
+
 ```
-
-# и проверка
-![1_4-ping](https://github.com/ssvstdt/netwbas/blob/main/lab9/1_4-ping.JPG)
-
- [наверх](#0)
-
-<a name="3"><h2>Часть 2. проверка назначения SLAAC от R1</h2></a>
-
-# ipconfig на PC-A
-![pca-slaac](https://github.com/ssvstdt/netwbas/blob/main/lab9/2_1-pca-slaac.JPG)
+![1_2](https://github.com/ssvstdt/netwbas/blob/main/lab9/1_2_b.JPG)
 
  [наверх](#0) 
 
 
-<a name="4"><h2>Часть 3. Настройка и проверка сервера DHCPv6 на R1</h2></a>
-# текущая конфигурация PC-A
-![pc-a_ipconfig](https://github.com/ssvstdt/netwbas/blob/main/lab9/3_1-pca-ipconfig.JPG) 
+<a name="3"><h2>Часть 2. Настройка сетей VLAN</h2></a>
 
-# конфигурация PC-A после включения DHCP на R1
+# S1
+![2_S1](https://github.com/ssvstdt/netwbas/blob/main/lab9/2_1all.JPG)
 
-![pca-ipconfig](https://github.com/ssvstdt/netwbas/blob/main/lab9/3_2-pca-ipconfig.JPG)
-
- [наверх](#0) 
-# проверка 
-![pca_ping_r2](https://github.com/ssvstdt/netwbas/blob/main/lab9/4_3_pca_ping_r2.JPG)
+# S1
+![2_S2](https://github.com/ssvstdt/netwbas/blob/main/lab9/2_2all.JPG)
 
  [наверх](#0) 
 
-<a name="5"><h2>Часть 4. Настройка сервера DHCPv6 с сохранением состояния на R1</h2></a>
 
-# создание дополнительного пула
-![r1_dhcp](https://github.com/ssvstdt/netwbas/blob/main/lab9/4_4_r1_dhcp.JPG)
+<a name="4"><h2>Часть 3. Настройки безопасности коммутатора</h2></a>
+# Шаг 1. Релизация магистральных соединений 802.1Q.
+![3_1a1](https://github.com/ssvstdt/netwbas/blob/main/lab9/3_1_a.JPG) 
 
- [наверх](#0)
+![3_1a2](https://github.com/ssvstdt/netwbas/blob/main/lab9/3_1_a_2.JPG) 
 
-<a name="6"><h2>Часть 5. Настройка и проверка ретрансляции DHCPv6 на R2.</h2></a>
+# проверка
+![3_1d1](https://github.com/ssvstdt/netwbas/blob/main/lab9/3_1_d.JPG)
+![3_1d2](https://github.com/ssvstdt/netwbas/blob/main/lab9/3_1_d_2.JPG)
 
-# начальная конфигурация PC-B
-![pcb-initial](https://github.com/ssvstdt/netwbas/blob/main/lab9/5_1_pcb_initial.JPG)
+ 
+# Безопасность неиспользуемых портов коммутатора
+![3_3b](https://github.com/ssvstdt/netwbas/blob/main/lab9/3_3_b.JPG)
+![3_3b2](https://github.com/ssvstdt/netwbas/blob/main/lab9/3_3_b_2.JPG)
 
+# Документирование и реализация функций безопасности порта
+![3_4a](https://github.com/ssvstdt/netwbas/blob/main/lab9/3_4_a.JPG)
+![3_4c1](https://github.com/ssvstdt/netwbas/blob/main/lab9/3_4_c.JPG)
+![3_4c2](https://github.com/ssvstdt/netwbas/blob/main/lab9/3_4_c_2.JPG)
 
-# включаем ретрансляцию адресов на R2
-```
-R2 (конфигурация) # интерфейс g0/0/1
-R2(config-if)# ipv6 nd managed-config-flag
-R2(config-if)# ipv6 dhcp relay destination 2001:db8:acad:2::1 g0/0/0
-```
+# Реализация DHCP snooping
+![3_5d](https://github.com/ssvstdt/netwbas/blob/main/lab9/3_5_d.JPG)
+![3_5e](https://github.com/ssvstdt/netwbas/blob/main/lab9/3_5_e.JPG)
+![3_5f](https://github.com/ssvstdt/netwbas/blob/main/lab9/3_5_f.JPG)
 
- [наверх](#0)
+# Реализация PortFast и BPDU Guard
+![3_6c1](https://github.com/ssvstdt/netwbas/blob/main/lab9/3_6_c1.JPG)
+![3_6c2](https://github.com/ssvstdt/netwbas/blob/main/lab9/3_6_c2.JPG)
+
+# Проверка наличия сквозного ⁪подключения
+![3_7](https://github.com/ssvstdt/netwbas/blob/main/lab9/3_7.JPG)
+
+ [наверх](#0) 
+
