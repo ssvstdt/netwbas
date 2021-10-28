@@ -267,9 +267,10 @@ auto-cost reference-bandwidth 10
 
 повторение вывода ip route ospf
 ![3_2b](https://github.com/ssvstdt/netwbas/blob/main/lab10/3_2b.JPG)
+т.к. теперь анонсируется весь интерфейс маска анонсируемой сети берется из настроек интерфейса
 
 # вывод команды show ip route ospf на маршрутизаторе R2
-![3_2с](https://github.com/ssvstdt/netwbas/blob/main/lab10/3_2с.JPG)
+![3_2с](https://github.com/ssvstdt/netwbas/blob/main/lab10/3_2c.JPG)
 
 # проверка доступности Lo1 на R1 с R2
 ![3_6d](https://github.com/ssvstdt/netwbas/blob/main/lab10/3_2d.JPG)
