@@ -25,9 +25,10 @@
 
 ----
 <a name="1"><h2>топология</h2></a>
-![Lab Map](https://github.com/ssvstdt/netwbas/blob/main/lab10/topology.JPG)
 
-![Lab Map](https://github.com/ssvstdt/netwbas/blob/main/lab10/topology_add.JPG)
+![Lab Map](https://github.com/ssvstdt/netwbas/blob/main/lab10/topology10.JPG)
+
+![Lab Map](https://github.com/ssvstdt/netwbas/blob/main/lab10/topology_add10.JPG)
   
  [наверх](#0)
 
